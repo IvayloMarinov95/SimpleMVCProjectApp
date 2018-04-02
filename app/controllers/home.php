@@ -36,9 +36,12 @@ class Home extends Controller{
     {
         $this->view('add-project');
     }
+
     public function info(){
-        $this->view('project-details');
+        $project = $this->project->find($_GET['id']);
+        $this->view('project-details', ['project' => $project]);
     }
+    
     public function edit(){
         $project = $this->project->find($_GET['id']);
         $this->view('edit-project', ['project' => $project]);
